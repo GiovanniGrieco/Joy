@@ -5,7 +5,7 @@ Joy is a simple tool to control your DJI Tello drone using your Joystick and PC.
 Simplicity is the key of this tool: it does not offer telemetry and/or video feedback.
 
 ## Requirements
-* Python 3.6+ doe to [PEP498 Usage](https://docs.python.org/3.6/whatsnew/3.6.html#whatsnew36-pep498)
+* Python 3.6+ due to [PEP498 Usage](https://docs.python.org/3.6/whatsnew/3.6.html#whatsnew36-pep498)
 * SDL Library - Windows shared library is already included, for Linux and macOS please check your package manager of reference.
 * Python modules listed in [requirements.txt](requirements.txt)
 
