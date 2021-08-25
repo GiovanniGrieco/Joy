@@ -6,13 +6,22 @@ Author: Giovanni Grieco <giovanni@grieco.dev>
 """
 import collections
 import time
+import os
 from threading import Thread
 
-import sdl2
-import sdl2.ext
 from scapy import sendrecv
 from scapy.layers.inet import IP, UDP
 from scapy.packet import Raw
+
+"""
+Importing SDL2 in Windows could lead to an ImportError if DLL is not found.
+Let's force it to search in the current directory.
+"""
+if os.name == 'nt':
+    os.environ['PYSDL2_DLL_PATH'] = os.curdir
+
+import sdl2
+import sdl2.ext
 
 
 class JoystickController:
