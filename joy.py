@@ -72,7 +72,7 @@ class JoystickController:
         """
         threads = (
             Thread(target=self._receive_command_loop, daemon=True),
-            Thread(target=self._send_command_loop, daemon=False)
+            Thread(target=self._send_command_loop, daemon=False),
         )
 
         for t in threads:
@@ -99,8 +99,14 @@ class JoystickController:
         """
         sdl2.SDL_Init(sdl2.SDL_INIT_JOYSTICK)
 
-        if sdl2.SDL_NumJoysticks() < 1:
+        njoysticks = sdl2.SDL_NumJoysticks()
+        if njoysticks < 1:
             raise RuntimeError(f'No joysticks connected!')
+
+        print('Joysticks available:')
+        for i in range(njoysticks):
+            joy = sdl2.SDL_JoystickOpen(i)
+            print(f'  - {sdl2.SDL_JoystickName(joy).decode()}')
 
         return sdl2.SDL_JoystickOpen(0)
 
